@@ -45,6 +45,8 @@ class Counter extends Component {
   //   };
 
   render() {
+    console.log("Counter - Rendered");
+
     return (
       // react.fragment gets rid of the extra div in inspector
       <div>
