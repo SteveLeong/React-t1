@@ -12,11 +12,24 @@ class App extends Component {
       { id: 4, value: 0 }
     ]
   };
-
   //   Single source of Truth
   //   each components has their own local state, counters is an array of counters with value,
   //   this value is disconnected from the value property of each counter
   //   Solution: remove local state from components and only rely on props - Controlled Component
+
+  constructor() {
+    // Called once and only when a component is rendered in the DOM
+    super();
+    console.log("App - Constructor");
+  }
+
+  componentDidMount() {
+    // After the component is rendered in the DOM
+    // Perfect place to make AJAX calls to get data from the server
+    //    AJAX Call
+    //    setState
+    console.log("App - Mounted");
+  }
 
   handleIncrement = counter => {
     // console.log(counter);
@@ -43,7 +56,11 @@ class App extends Component {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
   };
+
   render() {
+    console.log("App - Rendered");
+    // Children are rendered recursively
+
     return (
       <React.Fragment>
         <NavBar

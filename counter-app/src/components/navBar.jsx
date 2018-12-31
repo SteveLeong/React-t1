@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // Stateless Functional Component
 // this.props only works in class components
@@ -6,6 +6,8 @@ import React, { Component } from "react";
 // objects destructuring
 
 const NavBar = ({ totalCounters }) => {
+  console.log("NavBar - Rendered");
+
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">
