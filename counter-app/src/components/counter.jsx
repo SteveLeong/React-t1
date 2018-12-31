@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 
+// Rule of Thumb:
+// The component that owns a piece of the state,
+// should be the one modifying it
+
 class Counter extends Component {
   state = {
     value: this.props.value,
     imageURL: "https://picsum.photos/200",
     tags: []
   };
+
+  //   Props vs State
+  //   props is read only, used to initialize the state, data given to a component
+  //   state is like private local internal data
 
   //   old approach to binding event handlers
   //   constructor() {
@@ -37,11 +45,10 @@ class Counter extends Component {
   //   };
 
   render() {
-    console.log(this.props);
     return (
       // react.fragment gets rid of the extra div in inspector
-      <React.Fragment>
-        {this.props.children}
+      <div>
+        {/* {this.props.children} */}
         {/* <img src={this.state.imageURL} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
@@ -51,10 +58,15 @@ class Counter extends Component {
         >
           Increment
         </button>
-        <br />
         {/* {this.state.tags.length === 0 && "Please create a new tag!"}
         {this.renderTags()} */}
-      </React.Fragment>
+        <button
+          onClick={this.props.onDelete}
+          className="btn btn-danger btn-sml m-2"
+        >
+          Delete
+        </button>
+      </div>
     );
   }
 
