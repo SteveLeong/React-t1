@@ -5,6 +5,16 @@ import React, { Component } from "react";
 // should be the one modifying it
 
 class Counter extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    // After a component is updated
+    // Can make AJAX calls here to request new data
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // Ajax call and get new data from the server
+    }
+  }
+
   //   state = {
   //     value: this.props.counter.value,
   //     imageURL: "https://picsum.photos/200",
