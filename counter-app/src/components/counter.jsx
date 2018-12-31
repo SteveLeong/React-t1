@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    value: this.props.value,
     imageURL: "https://picsum.photos/200",
     tags: []
   };
@@ -28,7 +28,7 @@ class Counter extends Component {
   //   arrow functions inherit 'this'
   handleIncrement = product => {
     console.log(product);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   //   Passing Event Arguments s1 : messy
@@ -37,9 +37,11 @@ class Counter extends Component {
   //   };
 
   render() {
+    console.log(this.props);
     return (
       // react.fragment gets rid of the extra div in inspector
       <React.Fragment>
+        {this.props.children}
         {/* <img src={this.state.imageURL} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
@@ -49,6 +51,7 @@ class Counter extends Component {
         >
           Increment
         </button>
+        <br />
         {/* {this.state.tags.length === 0 && "Please create a new tag!"}
         {this.renderTags()} */}
       </React.Fragment>
@@ -57,12 +60,12 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { value: count } = this.state;
     return count === 0 ? "Zero" : count;
   }
 }
