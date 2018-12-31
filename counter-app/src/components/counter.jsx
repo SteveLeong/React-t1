@@ -7,7 +7,7 @@ class Counter extends Component {
     tags: []
   };
 
-  // old approach to binding event handlers
+  //   old approach to binding event handlers
   //   constructor() {
   //     super();
   //     this.handleIncrement = this.handleIncrement.bind(this);
@@ -25,9 +25,9 @@ class Counter extends Component {
     );
   }
 
-  // arrow functions inherit 'this'
+  //   arrow functions inherit 'this'
   handleIncrement = () => {
-    console.log("Increment Clicked", this);
+    this.setState({ count: this.state.count + 1 });
   };
 
   render() {
