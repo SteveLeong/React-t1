@@ -6,7 +6,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     imageURL: "https://picsum.photos/200",
     tags: []
   };
@@ -61,7 +61,7 @@ class Counter extends Component {
         {/* {this.state.tags.length === 0 && "Please create a new tag!"}
         {this.renderTags()} */}
         <button
-          onClick={this.props.onDelete}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sml m-2"
         >
           Delete
