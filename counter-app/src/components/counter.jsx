@@ -26,9 +26,15 @@ class Counter extends Component {
   }
 
   //   arrow functions inherit 'this'
-  handleIncrement = () => {
+  handleIncrement = product => {
+    console.log(product);
     this.setState({ count: this.state.count + 1 });
   };
+
+  //   Passing Event Arguments s1 : messy
+  //   doHandleIncrement = () => {
+  //     this.handleIncrement({ id: 1 });
+  //   };
 
   render() {
     return (
@@ -37,7 +43,8 @@ class Counter extends Component {
         {/* <img src={this.state.imageURL} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          //   onClick={this.doHandleIncrement} - s1
+          onClick={() => this.handleIncrement(1)}
           className="btn btn-secondary btn-sm"
         >
           Increment
