@@ -15,6 +15,12 @@ class Counter extends Component {
     }
   }
 
+  componentWillUnmount() {
+    // called before removing a counter from the DOM
+    console.log("Counter - Unmount");
+    // Timers and listeners clean up
+  }
+
   //   state = {
   //     value: this.props.counter.value,
   //     imageURL: "https://picsum.photos/200",
