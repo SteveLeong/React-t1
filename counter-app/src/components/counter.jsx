@@ -5,11 +5,11 @@ import React, { Component } from "react";
 // should be the one modifying it
 
 class Counter extends Component {
-  state = {
-    value: this.props.counter.value,
-    imageURL: "https://picsum.photos/200",
-    tags: []
-  };
+  //   state = {
+  //     value: this.props.counter.value,
+  //     imageURL: "https://picsum.photos/200",
+  //     tags: []
+  //   };
 
   //   Props vs State
   //   props is read only, used to initialize the state, data given to a component
@@ -21,23 +21,23 @@ class Counter extends Component {
   //     this.handleIncrement = this.handleIncrement.bind(this);
   //   }
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+  //   renderTags() {
+  //     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
 
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
+  //     return (
+  //       <ul>
+  //         {this.state.tags.map(tag => (
+  //           <li key={tag}>{tag}</li>
+  //         ))}
+  //       </ul>
+  //     );
+  //   }
 
   //   arrow functions inherit 'this'
-  handleIncrement = product => {
-    console.log(product);
-    this.setState({ value: this.state.value + 1 });
-  };
+  //   handleIncrement = product => {
+  //     console.log(product);
+  //     this.setState({ value: this.state.value + 1 });
+  //   };
 
   //   Passing Event Arguments s1 : messy
   //   doHandleIncrement = () => {
@@ -53,7 +53,7 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           //   onClick={this.doHandleIncrement} - s1
-          onClick={() => this.handleIncrement(1)}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
@@ -72,12 +72,14 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    // classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { value: count } = this.state;
+    // const { value: count } = this.state;
+    const { value: count } = this.props.counter;
     return count === 0 ? "Zero" : count;
   }
 }
